@@ -11,7 +11,7 @@ imageSlider() {
   ];
   return FadeInLeftBig(
     child: Container(
-      margin: EdgeInsets.only(top: 10),
+      margin: const EdgeInsets.only(top: 10),
       child: CarouselSlider(
         items: imagelist.map((index) {
           return Builder(

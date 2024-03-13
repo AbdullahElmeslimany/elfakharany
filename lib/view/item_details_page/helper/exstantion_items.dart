@@ -36,7 +36,8 @@ extantionItems(BuildContext context) {
                 "جوز هند",
               ],
               checkBoxButtonValues: (values) {
-                print(values);
+                adda = values;
+                print(adda);
               },
               selectedColor: const Color.fromARGB(255, 252, 167, 57),
               unSelectedColor: Colors.white),
@@ -45,3 +46,5 @@ extantionItems(BuildContext context) {
     ),
   );
 }
+
+List adda = [];

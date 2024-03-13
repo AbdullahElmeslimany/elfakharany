@@ -1,5 +1,8 @@
+import 'package:elfakharany/view/home/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'exstantion_items.dart';
 
 buttonCastomAdd(BuildContext context, name) {
   return Center(
@@ -8,7 +11,9 @@ buttonCastomAdd(BuildContext context, name) {
         Get.defaultDialog(
             actions: [
               MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.back();
+                },
                 child: Container(
                     width: 80,
                     height: 30,
@@ -22,7 +27,9 @@ buttonCastomAdd(BuildContext context, name) {
                     ))),
               ),
               MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(HomePage());
+                },
                 child: Container(
                     width: 80,
                     height: 30,
@@ -43,7 +50,7 @@ buttonCastomAdd(BuildContext context, name) {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(name),
-                  const Text("سكر - قشطة - مكسرات  - لبن - لوتس - جوز هند"),
+                  Text("$adda"),
                 ],
               ),
             ));

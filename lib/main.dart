@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'view/cart/cart.dart';
+
 void main() {
   runApp(const MyApp());
 }
