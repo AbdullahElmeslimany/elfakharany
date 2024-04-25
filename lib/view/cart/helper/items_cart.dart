@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-itemsCart(BuildContext context) {
+itemsCart(BuildContext context, {required data}) {
   return Container(
     height: 120,
     width: MediaQuery.sizeOf(context).width,
@@ -17,9 +17,10 @@ itemsCart(BuildContext context) {
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              const Text(
-                "name",
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              Text(
+                data["item"],
+                style:
+                    const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -32,7 +33,7 @@ itemsCart(BuildContext context) {
                     width: 35,
                   ),
                   Text(
-                    "150 جنيه",
+                    "${data["price"]} جنيه",
                     style: TextStyle(
                         color: Colors.amber[800],
                         fontSize: 15,

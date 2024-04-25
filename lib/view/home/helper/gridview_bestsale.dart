@@ -3,7 +3,7 @@ import 'package:elfakharany/view/item_details_page/item_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-gridviewMoreSales(list) {
+gridviewMoreSales(list, id) {
   return FadeInUpBig(
     child: GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -14,7 +14,10 @@ gridviewMoreSales(list) {
         return InkWell(
           onTap: () {
             Get.to(DitailsItemsPage(
-                name: list[index]["name"], image: list[index]["image"]));
+                id: id,
+                data: list[index],
+                name: list[index]["name"],
+                image: list[index]["image"]));
           },
           child: Container(
             margin: const EdgeInsets.all(8),

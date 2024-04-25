@@ -1,11 +1,17 @@
 import 'package:elfakharany/view/cart/helper/sheet_buttom_custom.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../model_view/textfromfieldcustom.dart';
 
-coponAndPayment(BuildContext context) {
+coponAndPayment(BuildContext context, {required data}) {
   TextEditingController coponController = TextEditingController();
+  double sum = 0.0;
+  for (var element in data) {
+    sum += element["price"];
+  }
+  print(sum);
 
   return Container(
     padding: const EdgeInsets.symmetric(vertical: 20),
@@ -35,7 +41,12 @@ coponAndPayment(BuildContext context) {
                 ),
                 child: MaterialButton(
                   onPressed: () {
-                    Get.bottomSheet(sheetButtomCustom(context));
+                    if (coponController.text == "copon10") {
+                      sum = sum * 0.9;
+                    }
+                    print(sum);
+                    Get.bottomSheet(
+                        sheetButtomCustom(context, total: sum, data: data));
                   },
                   child: Text(
                     "دفع",
@@ -62,7 +73,7 @@ coponAndPayment(BuildContext context) {
                     ),
                   ),
                   Text(
-                    "\$ 350",
+                    "\$ $sum",
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,

@@ -1,59 +1,41 @@
 import 'package:elfakharany/view/home/homepage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
+import '../../../controller/bloc/order_cubit/order_cubit.dart';
+import '../../../controller/bloc/select_value_cubit/select_value_cubit.dart';
 import 'exstantion_items.dart';
 
-buttonCastomAdd(BuildContext context, name) {
+buttonCastomAdd(BuildContext context, name, {required data, required id}) {
+  final cubit = BlocProvider.of<SelectValueCubit>(context);
+  print(cubit.adda);
+
   return Center(
     child: MaterialButton(
       onPressed: () {
-        Get.defaultDialog(
-            actions: [
-              MaterialButton(
-                onPressed: () {
-                  Get.back();
-                },
-                child: Container(
-                    width: 80,
-                    height: 30,
-                    decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(15)),
-                    child: const Center(
-                        child: Text(
-                      "الغاء",
-                      style: TextStyle(color: Colors.white),
-                    ))),
-              ),
-              MaterialButton(
-                onPressed: () {
-                  Get.to(HomePage());
-                },
-                child: Container(
-                    width: 80,
-                    height: 30,
-                    decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 0, 144, 211),
-                        borderRadius: BorderRadius.circular(15)),
-                    child: const Center(
-                        child: Text(
-                      "اضافة",
-                      style: TextStyle(color: Colors.white),
-                    ))),
-              )
-            ],
-            title: "اضافة الي العربة",
-            content: Directionality(
-              textDirection: TextDirection.rtl,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(name),
-                  Text("$adda"),
-                ],
-              ),
-            ));
+        BlocProvider.of<OrderCubit>(context).addOrder(
+          data: data,
+          value: cubit.currentvalue,
+          item: name,
+          client: id,
+        );
+        Get.showSnackbar(const GetSnackBar(
+          message: "تمت اضافة الي العربية بنجاح",
+          duration: Duration(seconds: 3),
+        ));
+        // Get.defaultDialog(
+        //     title: "اضافة الي العربة",
+        //     content: Directionality(
+        //       textDirection: TextDirection.rtl,
+        //       child: Column(
+        //         crossAxisAlignment: CrossAxisAlignment.start,
+        //         children: [
+        //           Text(name),
+        //           Text("${BlocProvider.of<SelectValueCubit>(context).adda}"),
+        //         ],
+        //       ),
+        //     ));
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 20),

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:get/get.dart';
 
-appBarCustom() {
+import '../homepage.dart';
+
+appBarCustom({required id}) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -11,7 +13,7 @@ appBarCustom() {
         children: [
           InkWell(
             onTap: () {
-              Get.to(const CartPage());
+              Get.to(CartPage(id: id));
             },
             child: Padding(
               padding: const EdgeInsets.all(5.0),
@@ -31,7 +33,9 @@ appBarCustom() {
       ),
       IconButton(
         icon: const Icon(Icons.menu),
-        onPressed: () {},
+        onPressed: () {
+          scaffoldKey.currentState?.openDrawer();
+        },
       ),
     ],
   );

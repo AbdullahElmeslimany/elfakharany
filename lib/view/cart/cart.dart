@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../controller/bloc/order_cubit/order_cubit.dart';
 import 'helper/copon_and_payment.dart';
 import 'helper/items_cart.dart';
 
 class CartPage extends StatelessWidget {
-  const CartPage({super.key});
+  final id;
+  const CartPage({super.key, this.id});
 
   @override
   Widget build(BuildContext context) {
+    final cubit = BlocProvider.of<OrderCubit>(context);
+    cubit.detielsOrder(id: id);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -26,17 +31,27 @@ class CartPage extends StatelessWidget {
                   children: [
                     SizedBox(
                       height: MediaQuery.sizeOf(context).height - 300,
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: 1,
-                        itemBuilder: (BuildContext context, int index) {
-                          return itemsCart(context);
+                      child: BlocBuilder<OrderCubit, OrderState>(
+                        builder: (context, state) {
+                          if (state is SuccessState) {
+                            return ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: cubit.orderData.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return itemsCart(context,
+                                    data: state.date[index]);
+                              },
+                            );
+                          }
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
                         },
                       ),
                     ),
                   ],
                 ),
-                coponAndPayment(context)
+                coponAndPayment(context, data: cubit.orderData)
               ],
             ),
           ),

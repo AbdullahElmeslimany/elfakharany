@@ -1,5 +1,8 @@
 import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../controller/bloc/select_value_cubit/select_value_cubit.dart';
 
 extantionItems(BuildContext context) {
   return Container(
@@ -36,7 +39,8 @@ extantionItems(BuildContext context) {
                 "جوز هند",
               ],
               checkBoxButtonValues: (values) {
-                adda = values;
+                var adda =
+                    BlocProvider.of<SelectValueCubit>(context).adda = values;
                 print(adda);
               },
               selectedColor: const Color.fromARGB(255, 252, 167, 57),
@@ -46,5 +50,3 @@ extantionItems(BuildContext context) {
     ),
   );
 }
-
-List adda = [];

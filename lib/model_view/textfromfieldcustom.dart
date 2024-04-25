@@ -5,6 +5,7 @@ textFromFieldcustom({
   bool backgroundAnable = false,
   bool rtl = false,
   bool pass = false,
+  bool enabled = true,
   maxLines = 1,
   TextInputType keyboardType = TextInputType.name,
   length = false,
@@ -19,6 +20,7 @@ textFromFieldcustom({
   return SizedBox(
     width: width,
     child: TextFormField(
+      enabled: enabled,
       obscureText: pass,
       textDirection: rtl == true ? TextDirection.ltr : TextDirection.rtl,
       maxLines: maxLines,

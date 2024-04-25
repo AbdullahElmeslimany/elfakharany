@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -16,14 +14,15 @@ cardStartHomepage(BuildContext context) {
             height: 140,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-                color: Color.fromARGB(255, 192, 192, 192), borderRadius: BorderRadius.circular(10)),
+                color: const Color.fromARGB(255, 192, 192, 192),
+                borderRadius: BorderRadius.circular(10)),
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 15),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -74,3 +73,7 @@ cardStartHomepage(BuildContext context) {
     ),
   );
 }
+
+
+//aa@a.com  
+//123123

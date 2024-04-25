@@ -1,4 +1,6 @@
+import 'package:elfakharany/view/search/search.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 searchFieldCustom() {
   return Container(
@@ -8,7 +10,7 @@ searchFieldCustom() {
     child: TextFormField(
       readOnly: true,
       onTap: () {
-        print("ahhhhhh");
+        Get.to(const SearchPage());
       },
       cursorHeight: 13,
       style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
@@ -23,7 +25,7 @@ searchFieldCustom() {
       textAlign: TextAlign.end,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'يرجي ادخال اميل';
+          return 'يرجي ادخال ';
         }
         return null;
       },

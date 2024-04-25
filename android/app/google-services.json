@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "479619440049",
+    "project_id": "el-fakharany-bdc3a",
+    "storage_bucket": "el-fakharany-bdc3a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479619440049:android:435a1b96c3a944011e3190",
+        "android_client_info": {
+          "package_name": "com.example.elfakharany"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAboyj9q6aG5C5zkDNKyORFOK7AnfmbOVw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
