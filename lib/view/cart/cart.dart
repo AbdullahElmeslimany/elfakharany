@@ -11,6 +11,7 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = BlocProvider.of<OrderCubit>(context);
+
     cubit.detielsOrder(id: id);
     return Scaffold(
       appBar: AppBar(
@@ -39,7 +40,7 @@ class CartPage extends StatelessWidget {
                               itemCount: cubit.orderData.length,
                               itemBuilder: (BuildContext context, int index) {
                                 return itemsCart(context,
-                                    data: state.date[index]);
+                                    idAccount: id, data: state.date[index]);
                               },
                             );
                           }

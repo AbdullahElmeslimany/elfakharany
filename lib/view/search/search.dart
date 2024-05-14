@@ -1,13 +1,16 @@
+import 'package:elfakharany/view/item_details_page/item_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../controller/bloc/search_cubit/search_and_filter_cubit.dart';
 import '../../model_view/textfromfieldcustom.dart';
 
 class SearchPage extends StatelessWidget {
-  const SearchPage({super.key});
+  final id;
+  const SearchPage({super.key, this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -68,15 +71,48 @@ class SearchPage extends StatelessWidget {
                 Expanded(
                   child:
                       BlocConsumer<SearchAndFilterCubit, SearchAndFilterState>(
-                    listener: (context, state) {
-                      // TODO: implement listener
-                    },
+                    listener: (context, state) {},
                     builder: (context, state) {
                       if (state is FilterState) {
                         return ListView.builder(
                           itemCount: state.data.length,
                           itemBuilder: (BuildContext context, int index) {
-                            return Text(state.data[index]["name"]);
+                            String? image;
+                            if (state.data[index]["name"] == "الايسكريم") {
+                              image = "assets/images/33.jpg";
+                            } else if (state.data[index]["name"] == "حلويات") {
+                              image = "assets/images/11.jpg";
+                            } else if (state.data[index]["name"] == "بليلة") {
+                              image = "assets/images/22.jpg";
+                            } else if (state.data[index]["name"] == "العصائر") {
+                              image = "assets/images/44.jpg";
+                            }
+                            return InkWell(
+                              onTap: () {
+                                Get.to(DitailsItemsPage(
+                                    name: state.data[index]["name"],
+                                    image: image.toString(),
+                                    data: state.data[index],
+                                    id: id));
+                              },
+                              child: Container(
+                                  margin: const EdgeInsets.all(10),
+                                  padding: const EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(),
+                                      borderRadius: BorderRadius.circular(15)),
+                                  child: Row(
+                                    children: [
+                                      Image.asset(
+                                        image!,
+                                        height: 80,
+                                        width: 80,
+                                      ),
+                                      const Gap(15),
+                                      Text(state.data[index]["name"]),
+                                    ],
+                                  )),
+                            );
                           },
                         );
                       }

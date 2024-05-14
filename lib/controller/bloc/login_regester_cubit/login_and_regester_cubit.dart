@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -27,15 +29,20 @@ class LoginAndRegesterCubit extends Cubit<LoginAndRegesterState> {
     ///firebase
     try {
       //
+      log("login");
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password)
           .then(
-            (value) => Get.to(
-              () => HomePage(
-                uID: value.user!.uid,
-              ),
+        (value) {
+          log("Successful");
+
+          Get.to(
+            () => HomePage(
+              uID: value.user!.uid,
             ),
           );
+        },
+      );
       //
       loading = false;
       // emailController.clear();
@@ -44,10 +51,12 @@ class LoginAndRegesterCubit extends Cubit<LoginAndRegesterState> {
       emit(SignUpSuccessState());
     } on FirebaseAuthException catch (e) {
       loading = false;
+      log(e.code.toString());
       if (e.code == 'user-not-found') {
         emit(ErrorState(message: "البريد الالكتروني غير صحيح"));
       } else if (e.code == 'wrong-password') {
         emit(ErrorState(message: "الباسورد خاطئ"));
+        log(e.code.toString());
       }
     }
   }

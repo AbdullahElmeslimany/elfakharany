@@ -44,4 +44,10 @@ class OrderCubit extends Cubit<OrderState> {
       emit(SuccessState(date: orderData));
     });
   }
+
+  deleteOrder({required idItem, required idAccount}) async {
+    await _order.doc(idItem).delete().then((value) {
+      detielsOrder(id: idAccount);
+    });
+  }
 }

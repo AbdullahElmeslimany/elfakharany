@@ -16,14 +16,13 @@ class SearchAndFilterCubit extends Cubit<SearchAndFilterState> {
 
   filterdata(String value) {
     List filterdata = [];
-
     for (var element in dataAll) {
       if (element['name'].toString().contains(value)) {
         filterdata.add(element);
+
         print(element['name']);
         emit(FilterState(data: filterdata));
       }
     }
-    ;
   }
 }
