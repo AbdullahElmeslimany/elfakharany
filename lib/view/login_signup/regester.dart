@@ -1,4 +1,4 @@
-import 'package:elfakharany/view/home/login_signup/login.dart';
+import 'package:elfakharany/view/login_signup/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -6,10 +6,10 @@ import 'package:get/get.dart';
 
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-import '../../../controller/controller/regester_controller.dart';
-import '../../../controller/login_constant.dart';
-import '../../../controller/bloc/login_regester_cubit/login_and_regester_cubit.dart';
-import '../../../model_view/textfromfieldcustom.dart';
+import '../../controller/controller/regester_controller.dart';
+import '../../controller/login_constant.dart';
+import '../../controller/bloc/login_regester_cubit/login_and_regester_cubit.dart';
+import '../../model_view/textfromfieldcustom.dart';
 
 class RegesterPage extends StatelessWidget {
   const RegesterPage({super.key});

@@ -9,7 +9,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 import '../profile/profile.dart';
-import 'login_signup/login.dart';
+import '../login_signup/login.dart';
 
 GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -22,28 +22,28 @@ class HomePage extends StatelessWidget {
     List<Map> items = [
       {
         "name": "الحلويات",
-        "image": "assets/images/1.jpg",
+        "image": "assets/images/11.jpg",
         "priceL": "300",
         "priceM": "280",
         "priceS": "220"
       },
       {
         "name": "البليلة",
-        "image": "assets/images/2.jpg",
+        "image": "assets/images/22.jpg",
         "priceL": "80",
         "priceM": "65",
         "priceS": "55"
       },
       {
         "name": "الايسكريم",
-        "image": "assets/images/3.jpg",
+        "image": "assets/images/33.jpg",
         "priceL": "40",
         "priceM": "30",
         "priceS": "25"
       },
       {
         "name": "العصائر",
-        "image": "assets/images/4.jpg",
+        "image": "assets/images/44.jpg",
         "priceL": "100",
         "priceM": "75",
         "priceS": "60"
@@ -56,21 +56,21 @@ class HomePage extends StatelessWidget {
         child: ListView(
           children: [
             const Gap(30),
-            ListTile(
-              onTap: () {},
-              leading: Icon(
-                Icons.add_circle_rounded,
-                size: 27,
-                color: Colors.blue[700],
-              ),
-              title: const Text(
-                "اضافة منتج",
-                style: TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+            // ListTile(
+            //   onTap: () {},
+            //   leading: Icon(
+            //     Icons.add_circle_rounded,
+            //     size: 27,
+            //     color: Colors.blue[700],
+            //   ),
+            //   title: const Text(
+            //     "اضافة منتج",
+            //     style: TextStyle(
+            //       fontSize: 17,
+            //       fontWeight: FontWeight.bold,
+            //     ),
+            //   ),
+            // ),
             const Gap(20),
             ListTile(
               onTap: () {
@@ -139,7 +139,7 @@ class HomePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 appBarCustom(id: uID),
-                searchFieldCustom(),
+                searchFieldCustom(id: uID),
                 imageSlider(),
                 categoriseItems(items),
                 Container(

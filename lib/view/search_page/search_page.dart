@@ -2,7 +2,7 @@ import 'package:elfakharany/view/search/search.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-searchFieldCustom() {
+searchFieldCustom({required id}) {
   return Container(
     height: 38,
     // width: MediaQuery.sizeOf(context).width - 25,
@@ -10,7 +10,9 @@ searchFieldCustom() {
     child: TextFormField(
       readOnly: true,
       onTap: () {
-        Get.to(const SearchPage());
+        Get.to(SearchPage(
+          id: id,
+        ));
       },
       cursorHeight: 13,
       style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
